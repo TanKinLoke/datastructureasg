@@ -9,6 +9,10 @@ package datastructureasg;
  *
  * @author user
  */
-public interface Queue<T> {
-    
+public interface QueueInterface<T> {
+    public void enqueue(T newEntry);
+    public void enqueueAll(T[] newEntries);
+    public T dequeue();
+    public T getFront();
+    public T 
 }

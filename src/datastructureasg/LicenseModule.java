@@ -9,7 +9,7 @@ package datastructureasg;
  *
  * @author user
  */
-public class DataStructureAsg {
+public class LicenseModule {
 
     /**
      * @param args the command line arguments
