@@ -4,15 +4,28 @@
  * and open the template in the editor.
  */
 package datastructureasg;
+import java.util.Iterator;
 
 /**
  *
  * @author user
  */
-public interface QueueInterface<T> {
+
+public interface QueueInterface<T>{
     public void enqueue(T newEntry);
     public void enqueueAll(T[] newEntries);
     public T dequeue();
     public T getFront();
-    public T 
+    public T getRear();
+    public boolean replace(int position, T newEntry);
+    public boolean remove(T entry);
+    public T removeAt(int position);
+    public void clear();
+    public boolean isEmpty();
+    public int count();
+    public int getCurrentPosition(T entry);
+    public boolean contains(T entry);
+    public T[] toArray();
+    public String toString();
+    public Iterator<T> getIterator();
 }
