@@ -10,5 +10,7 @@ package datastructureasg;
  * @author user
  */
 public class DrivingLicense {
-    
+    private String id;
+    private String ICNo;
+    private String name;
 }
