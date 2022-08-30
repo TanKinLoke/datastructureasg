@@ -15,15 +15,23 @@ public class DrivingLicense {
     private String id;
     private String ICNo;
     private String name;
+    private String licenseClass;
     private LocalDate expiryDate;
+    public static int idCount = 1;
     
     public DrivingLicense() {}
     
-    public DrivingLicense(String id, String ICNo, String name, LocalDate expiryDate) {
+    public DrivingLicense(String id) {
         this.id = id;
+    }
+    
+    public DrivingLicense(String ICNo, String name, String licenseClass, LocalDate expiryDate) {
+        id = String.format("L%05d", idCount);
         this.ICNo = ICNo;
         this.name = name;
+        this.licenseClass = licenseClass;
         this.expiryDate = expiryDate;
+        idCount++;
     }
 
     public String getId() {
@@ -49,6 +57,14 @@ public class DrivingLicense {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public String getLicenseClass() {
+        return licenseClass;
+    }
+
+    public void setLicenseClass(String licenseClass) {
+        this.licenseClass = licenseClass;
+    }
 
     public LocalDate getExpiryDate() {
         return expiryDate;
@@ -65,7 +81,7 @@ public class DrivingLicense {
         
         final DrivingLicense licenseObj = (DrivingLicense) obj;
         
-        if (Objects.equals(this.id, licenseObj.id))
+        if (id.equals(licenseObj.id))
             return true;
         
         //Everything else returns false
@@ -77,7 +93,7 @@ public class DrivingLicense {
         return "ID: " + id 
                 +"\nIC No.: " + ICNo
                 +"\nName: " + name
+                +"\nLicense Class: " + licenseClass
                 +"\nExpiry Date: " + expiryDate.toString();
     } 
-    
 }
