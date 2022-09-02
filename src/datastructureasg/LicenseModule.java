@@ -16,7 +16,14 @@ public class LicenseModule {
     /**
      * @param args the command line arguments
      */
-    static ArrayList<DrivingLicense> licenseList = new ArrayList<DrivingLicense>();
+    public static Branch[] malaysiaBranches = {
+        new Branch("KL01", "Kuala Lumpur"),
+        new Branch("PG01", "Penang"),
+        new Branch("PR01", "Perak")
+    };
+    public static int selectedBranchIndex;
+    
+    public static ArrayList<DrivingLicense> licenseList;
     
     public static void main(String[] args) {
         
@@ -24,14 +31,18 @@ public class LicenseModule {
         int option;
         Scanner scanner = new Scanner(System.in);
         
+        selectBranch();
+        
         do {
-            System.out.println("Driving License Module");
+            System.out.println("Driving License Module("+malaysiaBranches[selectedBranchIndex].getState()+" Branch)");
             System.out.println("----------------------");
             System.out.println("1) Register Driving License");
             System.out.println("2) Search Driving License");
             System.out.println("3) List Driving License");
             System.out.println("4) Maintain Driving License");
             System.out.println("5) Generate Report");
+            System.out.println("6) Change Branch");
+            System.out.println("7) Reset Branch License Data");
             System.out.println("0) Exit\n");
             System.out.print("Option: ");
             
@@ -49,8 +60,37 @@ public class LicenseModule {
                 maintainLicense();
             } else if (option == 5) {
                 generateLicenseModuleReport();
+            } else if (option == 6) {
+                selectBranch();
+            } else if (option == 7) {
+                resetBranchLicenseData();
             }
         } while (option != 0);
+        
+    }
+    
+    public static void selectBranch() {
+        Scanner scanner = new Scanner(System.in);
+        int option;
+        
+        System.out.println("Branch Selection");
+        System.out.println("----------------");
+        for (int i = 0; i < malaysiaBranches.length; i++) {
+            System.out.println((i+1) + ") " + malaysiaBranches[i].getState() + " Branch");
+        }
+        System.out.println();
+        System.out.print("Option: ");
+        option = scanner.nextInt();
+        scanner.nextLine();
+        
+        if (option > 0 && option <= malaysiaBranches.length) {
+            selectedBranchIndex = option - 1;
+            licenseList = malaysiaBranches[selectedBranchIndex].getLicenseRegistered();
+        } else {
+            System.out.println("Invalid option detected.");
+            System.out.println();
+            selectBranch();
+        }
         
     }
     
@@ -85,6 +125,7 @@ public class LicenseModule {
             System.out.println("Empty field detected");
         }
         
+        malaysiaBranches[selectedBranchIndex].setLicenseRegistered(licenseList);
         System.out.println();
         System.out.println();
     }
@@ -186,7 +227,8 @@ public class LicenseModule {
                     System.out.println("Invalid option.");
                 }
                 
-                System.out.println("");
+                malaysiaBranches[selectedBranchIndex].setLicenseRegistered(licenseList);
+                System.out.println();
                 return;
             }
         }
@@ -196,7 +238,33 @@ public class LicenseModule {
     }
     
     public static void generateLicenseModuleReport() {
+        System.out.println("License Module Report");
+        System.out.println("---------------------");
+        for (int i = 0; i < malaysiaBranches.length; i++) {
+            ArrayList<DrivingLicense> tempLicenseList = malaysiaBranches[i].getLicenseRegistered();
+            
+            System.out.println(malaysiaBranches[i].getState() + " Branch:");
+            System.out.println("License Registered: " + tempLicenseList.size());
+            System.out.println("Latest Registered License ID: " + ((tempLicenseList.getRear() == null) ? "None" : tempLicenseList.getRear().getId()));
+            System.out.println();
+        }
+    }
+    
+    public static void resetBranchLicenseData() {
+        Scanner scanner = new Scanner(System.in);
+        String option;
         
+        System.out.println("Reset Branch License Data (" + malaysiaBranches[selectedBranchIndex].getState() + " Branch)");
+        System.out.println("---------------------------------------------------------");
+        System.out.print("Are you sure? (Y/N): ");
+        option = scanner.next();
+        
+        if (option.toUpperCase() == "Y") {
+            licenseList.clear();
+            malaysiaBranches[selectedBranchIndex].setLicenseRegistered(licenseList);
+        } else {
+            return;
+        }
     }
     
 }

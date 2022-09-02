@@ -11,7 +11,14 @@ package datastructureasg;
 public class Branch {
     private String branchID;
     private String state;
-    private ArrayList<DrivingLicense> licenseRegistered;
+    private ArrayList<DrivingLicense> licenseRegistered = new ArrayList<DrivingLicense>();
+    
+    public Branch() {}
+    
+    public Branch(String branchID, String state) {
+        this.branchID = branchID;
+        this.state = state;
+    }
 
     public String getBranchID() {
         return branchID;

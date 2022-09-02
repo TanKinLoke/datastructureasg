@@ -62,6 +62,22 @@ public class ArrayList<T> implements ListInterface<T> {
         
         return result;
     }
+    
+    public T getFront() {
+        if (number > 0) {
+            return array[0];
+        } else {
+            return null;
+        }
+    }
+
+    public T getRear() {
+        if (number > 0) {
+            return array[number - 1];
+        } else {
+            return null;
+        }
+    }
 
     public void clear() {
         number = 0;
@@ -102,6 +118,16 @@ public class ArrayList<T> implements ListInterface<T> {
     public int size() {
         return number;
     }
+    
+    public T[] toArray() {
+        T[] resultArray = (T[]) new Object[size()]; 
+        
+        for (int index = 0; index < number; index++) {
+            resultArray[index] = array[index];
+        }
+        
+        return resultArray;
+    }
 
     public boolean isEmpty() {
         return number == 0;
@@ -131,5 +157,5 @@ public class ArrayList<T> implements ListInterface<T> {
         
         array = newArray;
     }
-    
+
 }
