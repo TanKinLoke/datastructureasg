@@ -23,6 +23,7 @@ public class ArrayList<T> implements ListInterface<T> {
         array = (T[]) new Object[size]; 
     }
     
+    @Override
     public boolean add(T newEntry) {
         if (number == array.length)
             extendArray();
@@ -32,6 +33,7 @@ public class ArrayList<T> implements ListInterface<T> {
         return true;
     }
 
+    @Override
     public boolean add(T newEntry, int newPosition) {
         if (number == array.length)
             extendArray();
@@ -49,8 +51,7 @@ public class ArrayList<T> implements ListInterface<T> {
         return isSuccessful;
     }
 
-    
-
+    @Override
     public T remove(int givenPosition) {
         T result = null;
         
@@ -63,7 +64,8 @@ public class ArrayList<T> implements ListInterface<T> {
         return result;
     }
     
-    public T getFront() {
+    @Override
+    public T getFirst() {
         if (number > 0) {
             return array[0];
         } else {
@@ -71,7 +73,8 @@ public class ArrayList<T> implements ListInterface<T> {
         }
     }
 
-    public T getRear() {
+    @Override
+    public T getLast() {
         if (number > 0) {
             return array[number - 1];
         } else {
@@ -79,11 +82,13 @@ public class ArrayList<T> implements ListInterface<T> {
         }
     }
 
+    @Override
     public void clear() {
         number = 0;
         array = (T[]) new Object[array.length];
     }
 
+    @Override
     public boolean replace(int givenPosition, T newEntry) {
         boolean isSuccessful = true;
         
@@ -95,6 +100,7 @@ public class ArrayList<T> implements ListInterface<T> {
         return true;
     }
 
+    @Override
     public T getEntry(int givenPosition) {
         if (givenPosition >= 1 && givenPosition <= number)
             return array[givenPosition - 1];
@@ -115,10 +121,12 @@ public class ArrayList<T> implements ListInterface<T> {
         return found;
     }
 
+    @Override
     public int size() {
         return number;
     }
     
+    @Override
     public T[] toArray() {
         T[] resultArray = (T[]) new Object[size()]; 
         
@@ -129,6 +137,7 @@ public class ArrayList<T> implements ListInterface<T> {
         return resultArray;
     }
 
+    @Override
     public boolean isEmpty() {
         return number == 0;
     }

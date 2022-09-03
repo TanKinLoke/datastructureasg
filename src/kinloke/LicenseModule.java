@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kinloke;
 import java.util.Scanner;
 import java.time.LocalDate;
 
-/**
- *
- * @author user
- */
 public class LicenseModule {
 
     /**
@@ -245,7 +236,7 @@ public class LicenseModule {
             
             System.out.println(malaysiaBranches[i].getState() + " Branch:");
             System.out.println("License Registered: " + tempLicenseList.size());
-            System.out.println("Latest Registered License ID: " + ((tempLicenseList.getRear() == null) ? "None" : tempLicenseList.getRear().getId()));
+            System.out.println("Latest Registered License ID: " + ((tempLicenseList.getLast() == null) ? "None" : tempLicenseList.getLast().getId()));
             System.out.println();
         }
     }
