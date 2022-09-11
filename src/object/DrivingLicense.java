@@ -1,4 +1,4 @@
-package kinloke;
+package object;
 import java.time.LocalDate;
 import java.util.Objects;
 

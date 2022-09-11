@@ -1,4 +1,4 @@
-package kinloke;
+package adt.kinloke;
 
 public interface ListInterface<T> {
     public boolean add(T newEntry);

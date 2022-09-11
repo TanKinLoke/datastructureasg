@@ -1,4 +1,4 @@
-package kinloke;
+package adt.kinloke;
 
 public class ArrayList<T> implements ListInterface<T> {
     private T[] array;

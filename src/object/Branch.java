@@ -1,4 +1,6 @@
-package kinloke;
+package object;
+
+import adt.kinloke.ArrayList;
 
 public class Branch {
     private String branchID;
