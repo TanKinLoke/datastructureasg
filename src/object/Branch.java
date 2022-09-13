@@ -38,4 +38,8 @@ public class Branch {
         this.licenseRegistered = licenseRegistered;
     }
     
+    public void addLicense(DrivingLicense license) {
+        licenseRegistered.add(license);
+    }
+    
 }

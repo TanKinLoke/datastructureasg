@@ -112,14 +112,13 @@ public class LicenseModule {
         
         if (!ICNo.isEmpty() && !name.isEmpty() && !licenseClass.isEmpty()) {
             DrivingLicense tempLicense = new DrivingLicense(ICNo, name, licenseClass, LocalDate.now().plusYears(yearsToAdd));
-            licenseList.add(tempLicense);
+            malaysiaBranches[selectedBranchIndex].addLicense(tempLicense); //Add license into the branch
             
             System.out.println("ID: " + tempLicense.getId() + ",License registered successfully");
         } else {
             System.out.println("Empty field detected");
         }
         
-        malaysiaBranches[selectedBranchIndex].setLicenseRegistered(licenseList);
         System.out.println();
         System.out.println();
     }
@@ -155,8 +154,10 @@ public class LicenseModule {
         System.out.println("------------------------");
         
         if (licenseList.size() > 0) {
-            for (int i = 1; i <= licenseList.size(); i++) {
-                System.out.println(licenseList.getEntry(i).toString());
+            DrivingLicense[] licenseArr = licenseList.toArray();
+            
+            for (int i = 1; i <= licenseArr.length; i++) {
+                System.out.println(licenseArr[i].toString());
                 System.out.println("------------------------");
             }
         } else {
