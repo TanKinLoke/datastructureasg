@@ -30,12 +30,12 @@ public class LicenseModule {
         do {
             System.out.println("Driving License Module("+malaysiaBranches[selectedBranchIndex].getState()+" Branch)");
             System.out.println("----------------------");
-            System.out.println("1) Register Driving License");
-            System.out.println("2) Search Driving License");
-            System.out.println("3) List Driving License");
-            System.out.println("4) Maintain Driving License");
-            System.out.println("5) Generate Report");
-            System.out.println("6) Change Branch");
+            System.out.println("1) Register Driving License ➕");
+            System.out.println("2) Search Driving License 🔍");
+            System.out.println("3) List Driving License 📃");
+            System.out.println("4) Maintain Driving License 🛠");
+            System.out.println("5) Generate Report 📄");
+            System.out.println("6) Change Branch 🏚");
             System.out.println("7) Reset Branch License Data");
             System.out.println("0) Exit\n");
             System.out.print("Option: ");
