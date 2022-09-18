@@ -153,11 +153,9 @@ public class LicenseModule {
         System.out.println("List Driving License");
         System.out.println("------------------------");
         
-        if (licenseList.size() > 0) {
-            DrivingLicense[] licenseArr = licenseList.toArray();
-            
-            for (int i = 1; i <= licenseArr.length; i++) {
-                System.out.println(licenseArr[i].toString());
+        if (licenseList.size() > 0) {            
+            for (int i = 1; i <= licenseList.size(); i++) {
+                System.out.println(licenseList.getEntry(i).toString());
                 System.out.println("------------------------");
             }
         } else {
@@ -247,16 +245,17 @@ public class LicenseModule {
     
     public static void resetBranchLicenseData() {
         Scanner scanner = new Scanner(System.in);
-        String option;
+        char option;
         
         System.out.println("Reset Branch License Data (" + malaysiaBranches[selectedBranchIndex].getState() + " Branch)");
         System.out.println("---------------------------------------------------------");
         System.out.print("Are you sure? (Y/N): ");
-        option = scanner.next();
+        option = scanner.next().charAt(0);
         
-        if (option.toUpperCase() == "Y") {
+        if (Character.toUpperCase(option) == 'Y') {
             licenseList.clear();
             malaysiaBranches[selectedBranchIndex].setLicenseRegistered(licenseList);
+            System.out.println("Branch License Record reset successfully");
         } else {
             return;
         }

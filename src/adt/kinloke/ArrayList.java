@@ -120,11 +120,11 @@ public class ArrayList<T> implements ListInterface<T> {
     @Override
     public T[] toArray() {
         T[] resultArray = (T[]) new Object[size()]; 
-        
+
         for (int index = 0; index < number; index++) {
             resultArray[index] = array[index];
         }
-        
+
         return resultArray;
     }
 
