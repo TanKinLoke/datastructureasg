@@ -1,4 +1,4 @@
-package kinloke;
+package client;
 import object.DrivingLicense;
 import object.Branch;
 import adt.kinloke.ArrayList;
